@@ -40,6 +40,7 @@ function _issueToStory(authorId, projectId, issue, issueComments) {
     created_at: issue.created_at,
     updated_at: issue.updated_at,
     external_id: issue.url,
+    labels: _ghToChLabels(issue.labels)
   }
 }
 
@@ -51,4 +52,12 @@ function _presentComments(authorId, issueComments) {
     updated_at: issueComment.updated_at,
     external_id: issueComment.url,
   }))
+}
+
+function _ghToChLabels(githubLabels) {
+  const labels = githubLabels.map(githubLabel => ({
+    name: githubLabel.name
+  }))
+
+  return labels
 }
