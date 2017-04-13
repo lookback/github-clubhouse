@@ -58,6 +58,6 @@ function _ghToChLabels(githubLabels) {
   const labels = githubLabels.map(githubLabel => ({
     name: githubLabel.name
   }))
-
+  labels.push({name: `repo:${process.env.GITHUB_REPO_NAME}` })
   return labels
 }
